@@ -13,42 +13,58 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final myBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5),
+      borderSide: BorderSide(
+        width: 2,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Currency Converter'),
       ),
       body: Container(
         color: Theme.of(context).copyWith().highlightColor,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                result.toString(),
-                style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-              TextField(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              '₹ $result',
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Theme.of(context).hintColor),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: TextField(
                 controller: valueController,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Please enter value in USD',
-                  suffixIcon: Icon(Icons.monetization_on_outlined),
+                  suffixIcon: Icon(Icons.monetization_on_outlined, color: Theme.of(context).hintColor),
+                  enabled: true,
+                  border: myBorder,
+                  enabledBorder: myBorder,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    result = double.parse(valueController.text) * 81;
-                  });
-                },
-                child: const Text('Convert'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  result = double.parse(valueController.text) * 81;
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
               ),
-            ],
-          ),
+              child: const Text('Convert', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+            ),
+          ],
         ),
       ),
     );
