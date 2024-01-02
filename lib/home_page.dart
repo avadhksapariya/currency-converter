@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 decoration: InputDecoration(
                   hintText: 'Please enter value in USD',
-                  suffixIcon: Icon(Icons.monetization_on_outlined, color: Theme.of(context).hintColor),
+                  suffixIcon: Icon(Icons.attach_money, color: Theme.of(context).hintColor),
                   enabled: true,
                   border: myBorder,
                   enabledBorder: myBorder,
