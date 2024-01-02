@@ -12,6 +12,12 @@ class _HomePageState extends State<HomePage> {
   double result = 0;
 
   @override
+  void dispose() {
+    super.dispose();
+    valueController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final myBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
@@ -36,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Theme.of(context).hintColor),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
               child: TextField(
                 controller: valueController,
                 keyboardType: const TextInputType.numberWithOptions(
