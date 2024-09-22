@@ -39,7 +39,8 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text(
               '₹ $result',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Theme.of(context).hintColor),
+              style: TextStyle(
+                  fontSize: 40, fontWeight: FontWeight.bold, color: Theme.of(context).hintColor),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
@@ -55,6 +56,13 @@ class _HomePageState extends State<HomePage> {
                   border: myBorder,
                   enabledBorder: myBorder,
                 ),
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      result = 0;
+                    });
+                  }
+                },
               ),
             ),
             ElevatedButton(
@@ -68,7 +76,10 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),
-              child: const Text('Convert', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+              child: const Text(
+                'Convert',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
             ),
           ],
         ),

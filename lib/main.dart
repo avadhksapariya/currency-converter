@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo App',
+      title: 'Currency Converter',
       theme: lightMode,
       darkTheme: darkMode,
       themeMode: ThemeMode.system,
